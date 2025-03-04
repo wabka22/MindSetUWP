@@ -1,2 +1,2 @@
-C:\Users\olire\Documents\GitHub\MindSetUWP\examples\TestApp\TestApp\TestApp.csproj;x86
-C:\Users\olire\Documents\GitHub\MindSetUWP\src\MindSetUWA\MindSetUWP.csproj;x86
+C:\Users\alexe\Desktop\MindSetUWP\examples\TestApp\TestApp\TestApp.csproj;x86
+C:\Users\alexe\Desktop\MindSetUWP\src\MindSetUWA\MindSetUWP.csproj;x86

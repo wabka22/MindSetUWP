@@ -3,13 +3,13 @@
 /runtime:mrt100_app
 /eh:clr
 /pdb
-"/nativelink:C:\Program Files (x86)\MSBuild\Microsoft\.NetNative\x86\ilc\lib\Native\vmath.lib"
+"/nativelink:C:\Program Files (x86)\MSBuild\15.0\.Net\.NetNative\15.0.24211\x86\ilc\lib\Native\vmath.lib"
 /customImports
 /methodBodyFolding
-"C:\Users\olire\Documents\GitHub\MindSetUWP\examples\TestApp\TestApp\obj\x86\Release\ilc\intermediate\MDIL\TestApp.mdilexe"
-"/i:C:\Users\olire\Documents\GitHub\MindSetUWP\examples\TestApp\TestApp\obj\x86\Release\ilc\intermediate\MDIL\"
-/out:"C:\Users\olire\Documents\GitHub\MindSetUWP\examples\TestApp\TestApp\obj\x86\Release\ilc\intermediate\Native\TestApp.exe"
-"/res:C:\Users\olire\Documents\GitHub\MindSetUWP\examples\TestApp\TestApp\obj\x86\Release\ilc\intermediate\Native.res"
-"/i:C:\Program Files (x86)\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.Native.Framework.1.2\1.2\x86\ret\MDIL"
+"C:\Users\alexe\Desktop\MindSetUWP\examples\TestApp\TestApp\obj\x86\Release\ilc\intermediate\MDIL\TestApp.mdilexe"
+"/i:C:\Users\alexe\Desktop\MindSetUWP\examples\TestApp\TestApp\obj\x86\Release\ilc\intermediate\MDIL\"
+/out:"C:\Users\alexe\Desktop\MindSetUWP\examples\TestApp\TestApp\obj\x86\Release\ilc\intermediate\Native\TestApp.exe"
+"/res:C:\Users\alexe\Desktop\MindSetUWP\examples\TestApp\TestApp\obj\x86\Release\ilc\intermediate\Native.res"
+"/i:C:\Program Files (x86)\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.Native.Framework.1.3\1.3\x86\ret\MDIL"
 /shimexe
 /classlib:SharedLibrary

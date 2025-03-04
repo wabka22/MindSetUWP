@@ -8,23 +8,88 @@
 //------------------------------------------------------------------------------
 
 
-
 namespace TestApp
 {
     public partial class App : global::Windows.UI.Xaml.Markup.IXamlMetadataProvider
     {
-    private global::TestApp.TestApp_XamlTypeInfo.XamlTypeInfoProvider _provider;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 0.0.0.0")]
+        private global::TestApp.TestApp_XamlTypeInfo.XamlMetaDataProvider __appProvider;
+
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 0.0.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private global::TestApp.TestApp_XamlTypeInfo.XamlMetaDataProvider _AppProvider
+        {
+            get
+            {
+                if (__appProvider == null)
+                {
+                    __appProvider = new global::TestApp.TestApp_XamlTypeInfo.XamlMetaDataProvider();
+                }
+                return __appProvider;
+            }
+        }
+
+        /// <summary>
+        /// GetXamlType(Type)
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 0.0.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::Windows.UI.Xaml.Markup.IXamlType GetXamlType(global::System.Type type)
+        {
+            return _AppProvider.GetXamlType(type);
+        }
+
+        /// <summary>
+        /// GetXamlType(String)
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 0.0.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::Windows.UI.Xaml.Markup.IXamlType GetXamlType(string fullName)
+        {
+            return _AppProvider.GetXamlType(fullName);
+        }
+
+        /// <summary>
+        /// GetXmlnsDefinitions()
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 0.0.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::Windows.UI.Xaml.Markup.XmlnsDefinition[] GetXmlnsDefinitions()
+        {
+            return _AppProvider.GetXmlnsDefinitions();
+        }
+    }
+}
+
+namespace TestApp.TestApp_XamlTypeInfo
+{
+    /// <summary>
+    /// Main class for providing metadata for the app or library
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 0.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public sealed class XamlMetaDataProvider : global::Windows.UI.Xaml.Markup.IXamlMetadataProvider
+    {
+        private global::TestApp.TestApp_XamlTypeInfo.XamlTypeInfoProvider _provider = null;
+
+        private global::TestApp.TestApp_XamlTypeInfo.XamlTypeInfoProvider Provider
+        {
+            get
+            {
+                if (_provider == null)
+                {
+                    _provider = new global::TestApp.TestApp_XamlTypeInfo.XamlTypeInfoProvider();
+                }
+                return _provider;
+            }
+        }
 
         /// <summary>
         /// GetXamlType(Type)
         /// </summary>
         public global::Windows.UI.Xaml.Markup.IXamlType GetXamlType(global::System.Type type)
         {
-            if(_provider == null)
-            {
-                _provider = new global::TestApp.TestApp_XamlTypeInfo.XamlTypeInfoProvider();
-            }
-            return _provider.GetXamlTypeByType(type);
+            return Provider.GetXamlTypeByType(type);
         }
 
         /// <summary>
@@ -32,11 +97,7 @@ namespace TestApp
         /// </summary>
         public global::Windows.UI.Xaml.Markup.IXamlType GetXamlType(string fullName)
         {
-            if(_provider == null)
-            {
-                _provider = new global::TestApp.TestApp_XamlTypeInfo.XamlTypeInfoProvider();
-            }
-            return _provider.GetXamlTypeByName(fullName);
+            return Provider.GetXamlTypeByName(fullName);
         }
 
         /// <summary>
@@ -47,42 +108,42 @@ namespace TestApp
             return new global::Windows.UI.Xaml.Markup.XmlnsDefinition[0];
         }
     }
-}
 
-namespace TestApp.TestApp_XamlTypeInfo
-{
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 0.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     internal partial class XamlTypeInfoProvider
     {
         public global::Windows.UI.Xaml.Markup.IXamlType GetXamlTypeByType(global::System.Type type)
         {
             global::Windows.UI.Xaml.Markup.IXamlType xamlType;
-            if (_xamlTypeCacheByType.TryGetValue(type, out xamlType))
-            {
-                return xamlType;
-            }
-            int typeIndex = LookupTypeIndexByType(type);
-            if(typeIndex != -1)
-            {
-                xamlType = CreateXamlType(typeIndex);
-            }
-            var userXamlType = xamlType as global::TestApp.TestApp_XamlTypeInfo.XamlUserType;
-            if(xamlType == null || (userXamlType != null && userXamlType.IsReturnTypeStub && !userXamlType.IsLocalType))
-            {
-                global::Windows.UI.Xaml.Markup.IXamlType libXamlType = CheckOtherMetadataProvidersForType(type);
-                if (libXamlType != null)
+            lock (_xamlTypeCacheByType) 
+            { 
+                if (_xamlTypeCacheByType.TryGetValue(type, out xamlType))
                 {
-                    if(libXamlType.IsConstructible || xamlType == null)
+                    return xamlType;
+                }
+                int typeIndex = LookupTypeIndexByType(type);
+                if(typeIndex != -1)
+                {
+                    xamlType = CreateXamlType(typeIndex);
+                }
+                var userXamlType = xamlType as global::TestApp.TestApp_XamlTypeInfo.XamlUserType;
+                if(xamlType == null || (userXamlType != null && userXamlType.IsReturnTypeStub && !userXamlType.IsLocalType))
+                {
+                    global::Windows.UI.Xaml.Markup.IXamlType libXamlType = CheckOtherMetadataProvidersForType(type);
+                    if (libXamlType != null)
                     {
-                        xamlType = libXamlType;
+                        if(libXamlType.IsConstructible || xamlType == null)
+                        {
+                            xamlType = libXamlType;
+                        }
                     }
                 }
-            }
-            if (xamlType != null)
-            {
-                _xamlTypeCacheByName.Add(xamlType.FullName, xamlType);
-                _xamlTypeCacheByType.Add(xamlType.UnderlyingType, xamlType);
+                if (xamlType != null)
+                {
+                    _xamlTypeCacheByName.Add(xamlType.FullName, xamlType);
+                    _xamlTypeCacheByType.Add(xamlType.UnderlyingType, xamlType);
+                }
             }
             return xamlType;
         }
@@ -94,31 +155,34 @@ namespace TestApp.TestApp_XamlTypeInfo
                 return null;
             }
             global::Windows.UI.Xaml.Markup.IXamlType xamlType;
-            if (_xamlTypeCacheByName.TryGetValue(typeName, out xamlType))
+            lock (_xamlTypeCacheByType)
             {
-                return xamlType;
-            }
-            int typeIndex = LookupTypeIndexByName(typeName);
-            if(typeIndex != -1)
-            {
-                xamlType = CreateXamlType(typeIndex);
-            }
-            var userXamlType = xamlType as global::TestApp.TestApp_XamlTypeInfo.XamlUserType;
-            if(xamlType == null || (userXamlType != null && userXamlType.IsReturnTypeStub && !userXamlType.IsLocalType))
-            {
-                global::Windows.UI.Xaml.Markup.IXamlType libXamlType = CheckOtherMetadataProvidersForName(typeName);
-                if (libXamlType != null)
+                if (_xamlTypeCacheByName.TryGetValue(typeName, out xamlType))
                 {
-                    if(libXamlType.IsConstructible || xamlType == null)
+                    return xamlType;
+                }
+                int typeIndex = LookupTypeIndexByName(typeName);
+                if(typeIndex != -1)
+                {
+                    xamlType = CreateXamlType(typeIndex);
+                }
+                var userXamlType = xamlType as global::TestApp.TestApp_XamlTypeInfo.XamlUserType;
+                if(xamlType == null || (userXamlType != null && userXamlType.IsReturnTypeStub && !userXamlType.IsLocalType))
+                {
+                    global::Windows.UI.Xaml.Markup.IXamlType libXamlType = CheckOtherMetadataProvidersForName(typeName);
+                    if (libXamlType != null)
                     {
-                        xamlType = libXamlType;
+                        if(libXamlType.IsConstructible || xamlType == null)
+                        {
+                            xamlType = libXamlType;
+                        }
                     }
                 }
-            }
-            if (xamlType != null)
-            {
-                _xamlTypeCacheByName.Add(xamlType.FullName, xamlType);
-                _xamlTypeCacheByType.Add(xamlType.UnderlyingType, xamlType);
+                if (xamlType != null)
+                {
+                    _xamlTypeCacheByName.Add(xamlType.FullName, xamlType);
+                    _xamlTypeCacheByType.Add(xamlType.UnderlyingType, xamlType);
+                }
             }
             return xamlType;
         }
@@ -130,14 +194,17 @@ namespace TestApp.TestApp_XamlTypeInfo
                 return null;
             }
             global::Windows.UI.Xaml.Markup.IXamlMember xamlMember;
-            if (_xamlMembers.TryGetValue(longMemberName, out xamlMember))
+            lock (_xamlMembers)
             {
-                return xamlMember;
-            }
-            xamlMember = CreateXamlMember(longMemberName);
-            if (xamlMember != null)
-            {
-                _xamlMembers.Add(longMemberName, xamlMember);
+                if (_xamlMembers.TryGetValue(longMemberName, out xamlMember))
+                {
+                    return xamlMember;
+                }
+                xamlMember = CreateXamlMember(longMemberName);
+                if (xamlMember != null)
+                {
+                    _xamlMembers.Add(longMemberName, xamlMember);
+                }
             }
             return xamlMember;
         }
@@ -156,7 +223,7 @@ namespace TestApp.TestApp_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[53];
+            _typeNameTable = new string[54];
             _typeNameTable[0] = "TestApp.Models.HamburgerList";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "String";
@@ -197,21 +264,22 @@ namespace TestApp.TestApp_XamlTypeInfo
             _typeNameTable[37] = "Windows.UI.Xaml.Media.PointCollection";
             _typeNameTable[38] = "WinRTXamlToolkit.Controls.DataVisualization.Charting.IRangeAxis";
             _typeNameTable[39] = "System.Nullable`1<Int32>";
-            _typeNameTable[40] = "System.Collections.IEnumerable";
-            _typeNameTable[41] = "WinRTXamlToolkit.Controls.DataVisualization.Charting.AnimationSequence";
-            _typeNameTable[42] = "Windows.UI.Xaml.Media.Animation.EasingFunctionBase";
-            _typeNameTable[43] = "TimeSpan";
-            _typeNameTable[44] = "WinRTXamlToolkit.Controls.DataVisualization.Charting.ISeriesHost";
-            _typeNameTable[45] = "WinRTXamlToolkit.Controls.Gauge";
-            _typeNameTable[46] = "Double";
-            _typeNameTable[47] = "Windows.UI.Xaml.Media.Brush";
-            _typeNameTable[48] = "TestApp.Views.PageNotFound";
-            _typeNameTable[49] = "WinRTXamlToolkit.Controls.DataVisualization.Charting.AreaSeries";
-            _typeNameTable[50] = "WinRTXamlToolkit.Controls.DataVisualization.Charting.LineAreaBaseSeries`1<WinRTXamlToolkit.Controls.DataVisualization.Charting.AreaDataPoint>";
-            _typeNameTable[51] = "Windows.UI.Xaml.Media.Geometry";
-            _typeNameTable[52] = "TestApp.Views.Start";
+            _typeNameTable[40] = "Int32";
+            _typeNameTable[41] = "System.Collections.IEnumerable";
+            _typeNameTable[42] = "WinRTXamlToolkit.Controls.DataVisualization.Charting.AnimationSequence";
+            _typeNameTable[43] = "Windows.UI.Xaml.Media.Animation.EasingFunctionBase";
+            _typeNameTable[44] = "TimeSpan";
+            _typeNameTable[45] = "WinRTXamlToolkit.Controls.DataVisualization.Charting.ISeriesHost";
+            _typeNameTable[46] = "WinRTXamlToolkit.Controls.Gauge";
+            _typeNameTable[47] = "Double";
+            _typeNameTable[48] = "Windows.UI.Xaml.Media.Brush";
+            _typeNameTable[49] = "TestApp.Views.PageNotFound";
+            _typeNameTable[50] = "WinRTXamlToolkit.Controls.DataVisualization.Charting.AreaSeries";
+            _typeNameTable[51] = "WinRTXamlToolkit.Controls.DataVisualization.Charting.LineAreaBaseSeries`1<WinRTXamlToolkit.Controls.DataVisualization.Charting.AreaDataPoint>";
+            _typeNameTable[52] = "Windows.UI.Xaml.Media.Geometry";
+            _typeNameTable[53] = "TestApp.Views.Start";
 
-            _typeTable = new global::System.Type[53];
+            _typeTable = new global::System.Type[54];
             _typeTable[0] = typeof(global::TestApp.Models.HamburgerList);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::System.String);
@@ -252,19 +320,20 @@ namespace TestApp.TestApp_XamlTypeInfo
             _typeTable[37] = typeof(global::Windows.UI.Xaml.Media.PointCollection);
             _typeTable[38] = typeof(global::WinRTXamlToolkit.Controls.DataVisualization.Charting.IRangeAxis);
             _typeTable[39] = typeof(global::System.Nullable<global::System.Int32>);
-            _typeTable[40] = typeof(global::System.Collections.IEnumerable);
-            _typeTable[41] = typeof(global::WinRTXamlToolkit.Controls.DataVisualization.Charting.AnimationSequence);
-            _typeTable[42] = typeof(global::Windows.UI.Xaml.Media.Animation.EasingFunctionBase);
-            _typeTable[43] = typeof(global::System.TimeSpan);
-            _typeTable[44] = typeof(global::WinRTXamlToolkit.Controls.DataVisualization.Charting.ISeriesHost);
-            _typeTable[45] = typeof(global::WinRTXamlToolkit.Controls.Gauge);
-            _typeTable[46] = typeof(global::System.Double);
-            _typeTable[47] = typeof(global::Windows.UI.Xaml.Media.Brush);
-            _typeTable[48] = typeof(global::TestApp.Views.PageNotFound);
-            _typeTable[49] = typeof(global::WinRTXamlToolkit.Controls.DataVisualization.Charting.AreaSeries);
-            _typeTable[50] = typeof(global::WinRTXamlToolkit.Controls.DataVisualization.Charting.LineAreaBaseSeries<global::WinRTXamlToolkit.Controls.DataVisualization.Charting.AreaDataPoint>);
-            _typeTable[51] = typeof(global::Windows.UI.Xaml.Media.Geometry);
-            _typeTable[52] = typeof(global::TestApp.Views.Start);
+            _typeTable[40] = typeof(global::System.Int32);
+            _typeTable[41] = typeof(global::System.Collections.IEnumerable);
+            _typeTable[42] = typeof(global::WinRTXamlToolkit.Controls.DataVisualization.Charting.AnimationSequence);
+            _typeTable[43] = typeof(global::Windows.UI.Xaml.Media.Animation.EasingFunctionBase);
+            _typeTable[44] = typeof(global::System.TimeSpan);
+            _typeTable[45] = typeof(global::WinRTXamlToolkit.Controls.DataVisualization.Charting.ISeriesHost);
+            _typeTable[46] = typeof(global::WinRTXamlToolkit.Controls.Gauge);
+            _typeTable[47] = typeof(global::System.Double);
+            _typeTable[48] = typeof(global::Windows.UI.Xaml.Media.Brush);
+            _typeTable[49] = typeof(global::TestApp.Views.PageNotFound);
+            _typeTable[50] = typeof(global::WinRTXamlToolkit.Controls.DataVisualization.Charting.AreaSeries);
+            _typeTable[51] = typeof(global::WinRTXamlToolkit.Controls.DataVisualization.Charting.LineAreaBaseSeries<global::WinRTXamlToolkit.Controls.DataVisualization.Charting.AreaDataPoint>);
+            _typeTable[52] = typeof(global::Windows.UI.Xaml.Media.Geometry);
+            _typeTable[53] = typeof(global::TestApp.Views.Start);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -313,10 +382,10 @@ namespace TestApp.TestApp_XamlTypeInfo
         private object Activate_24_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::WinRTXamlToolkit.Controls.DataVisualization.Charting.IAxis>(); }
         private object Activate_27_Collection() { return new global::System.Collections.ObjectModel.Collection<global::Windows.UI.Xaml.ResourceDictionary>(); }
         private object Activate_29_LineSeries() { return new global::WinRTXamlToolkit.Controls.DataVisualization.Charting.LineSeries(); }
-        private object Activate_45_Gauge() { return new global::WinRTXamlToolkit.Controls.Gauge(); }
-        private object Activate_48_PageNotFound() { return new global::TestApp.Views.PageNotFound(); }
-        private object Activate_49_AreaSeries() { return new global::WinRTXamlToolkit.Controls.DataVisualization.Charting.AreaSeries(); }
-        private object Activate_52_Start() { return new global::TestApp.Views.Start(); }
+        private object Activate_46_Gauge() { return new global::WinRTXamlToolkit.Controls.Gauge(); }
+        private object Activate_49_PageNotFound() { return new global::TestApp.Views.PageNotFound(); }
+        private object Activate_50_AreaSeries() { return new global::WinRTXamlToolkit.Controls.DataVisualization.Charting.AreaSeries(); }
+        private object Activate_53_Start() { return new global::TestApp.Views.Start(); }
         private void VectorAdd_3_List(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::TestApp.Models.HamburgerItem>)instance;
@@ -652,17 +721,23 @@ namespace TestApp.TestApp_XamlTypeInfo
 
             case 39:   //  System.Nullable`1<Int32>
                 userType = new global::TestApp.TestApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
+                userType.SetBoxedType(GetXamlTypeByName("Int32"));
+                userType.BoxInstance = userType.BoxType<global::System.Int32>;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 40:   //  System.Collections.IEnumerable
+            case 40:   //  Int32
+                xamlType = new global::TestApp.TestApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 41:   //  System.Collections.IEnumerable
                 userType = new global::TestApp.TestApp_XamlTypeInfo.XamlUserType(this, typeName, type, null);
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 41:   //  WinRTXamlToolkit.Controls.DataVisualization.Charting.AnimationSequence
+            case 42:   //  WinRTXamlToolkit.Controls.DataVisualization.Charting.AnimationSequence
                 userType = new global::TestApp.TestApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("Simultaneous", global::WinRTXamlToolkit.Controls.DataVisualization.Charting.AnimationSequence.Simultaneous);
                 userType.AddEnumValue("FirstToLast", global::WinRTXamlToolkit.Controls.DataVisualization.Charting.AnimationSequence.FirstToLast);
@@ -670,25 +745,25 @@ namespace TestApp.TestApp_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 42:   //  Windows.UI.Xaml.Media.Animation.EasingFunctionBase
+            case 43:   //  Windows.UI.Xaml.Media.Animation.EasingFunctionBase
                 xamlType = new global::TestApp.TestApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 43:   //  TimeSpan
+            case 44:   //  TimeSpan
                 userType = new global::TestApp.TestApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 44:   //  WinRTXamlToolkit.Controls.DataVisualization.Charting.ISeriesHost
+            case 45:   //  WinRTXamlToolkit.Controls.DataVisualization.Charting.ISeriesHost
                 userType = new global::TestApp.TestApp_XamlTypeInfo.XamlUserType(this, typeName, type, null);
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 45:   //  WinRTXamlToolkit.Controls.Gauge
+            case 46:   //  WinRTXamlToolkit.Controls.Gauge
                 userType = new global::TestApp.TestApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Control"));
-                userType.Activator = Activate_45_Gauge;
+                userType.Activator = Activate_46_Gauge;
                 userType.AddMemberName("Minimum");
                 userType.AddMemberName("Maximum");
                 userType.AddMemberName("Value");
@@ -705,30 +780,30 @@ namespace TestApp.TestApp_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 46:   //  Double
+            case 47:   //  Double
                 xamlType = new global::TestApp.TestApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 47:   //  Windows.UI.Xaml.Media.Brush
+            case 48:   //  Windows.UI.Xaml.Media.Brush
                 xamlType = new global::TestApp.TestApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 48:   //  TestApp.Views.PageNotFound
+            case 49:   //  TestApp.Views.PageNotFound
                 userType = new global::TestApp.TestApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_48_PageNotFound;
+                userType.Activator = Activate_49_PageNotFound;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 49:   //  WinRTXamlToolkit.Controls.DataVisualization.Charting.AreaSeries
+            case 50:   //  WinRTXamlToolkit.Controls.DataVisualization.Charting.AreaSeries
                 userType = new global::TestApp.TestApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("WinRTXamlToolkit.Controls.DataVisualization.Charting.LineAreaBaseSeries`1<WinRTXamlToolkit.Controls.DataVisualization.Charting.AreaDataPoint>"));
-                userType.Activator = Activate_49_AreaSeries;
+                userType.Activator = Activate_50_AreaSeries;
                 userType.AddMemberName("Geometry");
                 userType.AddMemberName("PathStyle");
                 xamlType = userType;
                 break;
 
-            case 50:   //  WinRTXamlToolkit.Controls.DataVisualization.Charting.LineAreaBaseSeries`1<WinRTXamlToolkit.Controls.DataVisualization.Charting.AreaDataPoint>
+            case 51:   //  WinRTXamlToolkit.Controls.DataVisualization.Charting.LineAreaBaseSeries`1<WinRTXamlToolkit.Controls.DataVisualization.Charting.AreaDataPoint>
                 userType = new global::TestApp.TestApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("WinRTXamlToolkit.Controls.DataVisualization.Charting.DataPointSingleSeriesWithAxes"));
                 userType.AddMemberName("DependentRangeAxis");
                 userType.AddMemberName("IndependentAxis");
@@ -737,13 +812,13 @@ namespace TestApp.TestApp_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 51:   //  Windows.UI.Xaml.Media.Geometry
+            case 52:   //  Windows.UI.Xaml.Media.Geometry
                 xamlType = new global::TestApp.TestApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 52:   //  TestApp.Views.Start
+            case 53:   //  TestApp.Views.Start
                 userType = new global::TestApp.TestApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_52_Start;
+                userType.Activator = Activate_53_Start;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -1783,7 +1858,7 @@ namespace TestApp.TestApp_XamlTypeInfo
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 0.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     internal class XamlSystemBaseType : global::Windows.UI.Xaml.Markup.IXamlType
     {
@@ -1829,10 +1904,13 @@ namespace TestApp.TestApp_XamlTypeInfo
     internal delegate object Activator();
     internal delegate void AddToCollection(object instance, object item);
     internal delegate void AddToDictionary(object instance, object key, object item);
+    internal delegate object CreateFromStringMethod(string args);
+    internal delegate object BoxInstanceMethod(object instance);
 
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 0.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     internal class XamlUserType : global::TestApp.TestApp_XamlTypeInfo.XamlSystemBaseType
+        , global::Windows.UI.Xaml.Markup.IXamlType2
     {
         global::TestApp.TestApp_XamlTypeInfo.XamlTypeInfoProvider _provider;
         global::Windows.UI.Xaml.Markup.IXamlType _baseType;
@@ -1841,6 +1919,7 @@ namespace TestApp.TestApp_XamlTypeInfo
         bool _isBindable;
         bool _isReturnTypeStub;
         bool _isLocalType;
+        global::Windows.UI.Xaml.Markup.IXamlType _boxedType;
 
         string _contentPropertyName;
         string _itemTypeName;
@@ -1866,6 +1945,7 @@ namespace TestApp.TestApp_XamlTypeInfo
         override public bool IsBindable { get { return _isBindable; } }
         override public bool IsReturnTypeStub { get { return _isReturnTypeStub; } }
         override public bool IsLocalType { get { return _isLocalType; } }
+        public global::Windows.UI.Xaml.Markup.IXamlType BoxedType { get { return _boxedType; } }
 
         override public global::Windows.UI.Xaml.Markup.IXamlMember ContentProperty
         {
@@ -1913,12 +1993,21 @@ namespace TestApp.TestApp_XamlTypeInfo
 
         override public void RunInitializer() 
         {
-            System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(UnderlyingType.TypeHandle);
+            global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(UnderlyingType.TypeHandle);
         }
 
         override public object CreateFromString(string input)
         {
-            if (_enumValues != null)
+            if (BoxedType != null)
+            {
+                return BoxInstance(BoxedType.CreateFromString(input));
+            }
+
+            if (CreateFromStringMethod != null)
+            {
+                return this.CreateFromStringMethod(input);
+            }
+            else if (_enumValues != null)
             {
                 int value = 0;
 
@@ -1973,6 +2062,8 @@ namespace TestApp.TestApp_XamlTypeInfo
         public Activator Activator { get; set; }
         public AddToCollection CollectionAdd { get; set; }
         public AddToDictionary DictionaryAdd { get; set; }
+        public CreateFromStringMethod CreateFromStringMethod {get; set; }
+        public BoxInstanceMethod BoxInstance {get; set; }
 
         public void SetContentPropertyName(string contentPropertyName)
         {
@@ -2014,6 +2105,17 @@ namespace TestApp.TestApp_XamlTypeInfo
             _keyTypeName = keyTypeName;
         }
 
+        public void SetBoxedType(global::Windows.UI.Xaml.Markup.IXamlType boxedType)
+        {
+            _boxedType = boxedType;
+        }
+
+        public object BoxType<T>(object instance) where T: struct
+        {
+            T unwrapped = (T)instance;
+            return new global::System.Nullable<T>(unwrapped);
+        }
+
         public void AddMemberName(string shortName)
         {
             if(_memberNames == null)
@@ -2036,7 +2138,7 @@ namespace TestApp.TestApp_XamlTypeInfo
     internal delegate object Getter(object instance);
     internal delegate void Setter(object instance, object value);
 
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 0.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     internal class XamlMember : global::Windows.UI.Xaml.Markup.IXamlMember
     {

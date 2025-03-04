@@ -1,0 +1,173 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\alexe\\Desktop\\MindSetUWP\\examples\\TestApp\\TestApp\\TestApp.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\alexe\\Desktop\\MindSetUWP\\examples\\TestApp\\TestApp\\TestApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\alexe\\Desktop\\MindSetUWP\\examples\\TestApp\\TestApp\\TestApp.csproj",
+        "projectName": "TestApp",
+        "projectPath": "C:\\Users\\alexe\\Desktop\\MindSetUWP\\examples\\TestApp\\TestApp\\TestApp.csproj",
+        "packagesPath": "C:\\Users\\alexe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alexe\\Desktop\\MindSetUWP\\examples\\TestApp\\TestApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\alexe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "uap10.0.10586"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "uap10.0.10586": {
+            "projectReferences": {
+              "C:\\Users\\alexe\\Desktop\\MindSetUWP\\src\\MindSetUWA\\MindSetUWP.csproj": {
+                "projectPath": "C:\\Users\\alexe\\Desktop\\MindSetUWP\\src\\MindSetUWA\\MindSetUWP.csproj"
+              }
+            }
+          }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "uap10.0.10586": {
+          "dependencies": {
+            "Microsoft.ApplicationInsights": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "Microsoft.ApplicationInsights.PersistenceChannel": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "Microsoft.ApplicationInsights.WindowsApps": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "Microsoft.NETCore.UniversalWindowsPlatform": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "WinRTXamlToolkit.Controls.DataVisualization.UWP": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "WinRTXamlToolkit.Controls.Gauge.UWP": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win10-arm": {
+          "#import": []
+        },
+        "win10-arm-aot": {
+          "#import": []
+        },
+        "win10-x64": {
+          "#import": []
+        },
+        "win10-x64-aot": {
+          "#import": []
+        },
+        "win10-x86": {
+          "#import": []
+        },
+        "win10-x86-aot": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\alexe\\Desktop\\MindSetUWP\\src\\MindSetUWA\\MindSetUWP.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\alexe\\Desktop\\MindSetUWP\\src\\MindSetUWA\\MindSetUWP.csproj",
+        "projectName": "MindSetUWP",
+        "projectPath": "C:\\Users\\alexe\\Desktop\\MindSetUWP\\src\\MindSetUWA\\MindSetUWP.csproj",
+        "packagesPath": "C:\\Users\\alexe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alexe\\Desktop\\MindSetUWP\\src\\MindSetUWA\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\alexe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "uap10.0.22621"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "uap10.0.22621": {
+            "projectReferences": {}
+          }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "uap10.0.22621": {
+          "dependencies": {
+            "Microsoft.NETCore.UniversalWindowsPlatform": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      },
+      "runtimes": {
+        "win10-arm": {
+          "#import": []
+        },
+        "win10-arm-aot": {
+          "#import": []
+        },
+        "win10-x64": {
+          "#import": []
+        },
+        "win10-x64-aot": {
+          "#import": []
+        },
+        "win10-x86": {
+          "#import": []
+        },
+        "win10-x86-aot": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

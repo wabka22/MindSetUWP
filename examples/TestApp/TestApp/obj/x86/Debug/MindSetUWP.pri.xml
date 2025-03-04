@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="MindSetUWP" version="1.0" primary="true">
+		<Qualifiers/>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="MindSetUWP">
+				<ResourceMapSubtree name="Properties">
+					<NamedResource name="MindSetUWA.rd.xml" uri="ms-resource://MindSetUWP/Files/MindSetUWP/Properties/MindSetUWA.rd.xml">
+						<Candidate type="Path">
+							<Value>MindSetUWP\Properties\MindSetUWA.rd.xml</Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

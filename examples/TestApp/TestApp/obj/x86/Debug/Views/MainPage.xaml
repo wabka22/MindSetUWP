@@ -9,16 +9,16 @@
 	xmlns:vm="using:TestApp.Models"
     mc:Ignorable="d">
 
-    <SplitView x:ConnectionId='1' x:Name="NavStrip" DisplayMode="CompactOverlay">
+    <SplitView x:ConnectionId='2' x:Name="NavStrip" DisplayMode="CompactOverlay">
     <SplitView.Pane>
         <StackPanel>
             <StackPanel.DataContext>
                 <vm:HamburgerList/>
             </StackPanel.DataContext>
             <StackPanel>
-                <Button x:ConnectionId='3' x:Name="NavButton" Content="&#xE700;" FontFamily="Segoe MDL2 Assets" Width="48" Height="36" Background="Transparent"                        />
+                <Button x:ConnectionId='6' x:Name="NavButton" Content="&#xE700;" FontFamily="Segoe MDL2 Assets" Width="48" Height="36" Background="Transparent"                        />
             </StackPanel>
-            <ListBox x:ConnectionId='2' x:Name="NavMenu" ItemsSource="{Binding MenuItems}"                                                                    >
+            <ListBox x:ConnectionId='3' x:Name="NavMenu" ItemsSource="{Binding MenuItems}"                                                                    >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">

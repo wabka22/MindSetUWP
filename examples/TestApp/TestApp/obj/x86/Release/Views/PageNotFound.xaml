@@ -46,7 +46,7 @@
                 Grid.Column="1"
                 Background="White"
                 Margin="0">
-                    <Button x:ConnectionId='2' x:Name="button" Content="Button" HorizontalAlignment="Left" Height="102" Margin="108,128,0,0" VerticalAlignment="Top" Width="252"                     />
+                    <Button x:ConnectionId='3' x:Name="button" Content="Button" HorizontalAlignment="Left" Height="102" Margin="108,128,0,0" VerticalAlignment="Top" Width="252"                     />
                 </Border>
                 <Border
                 Grid.Column="5"
@@ -76,7 +76,7 @@
                 Grid.Column="3"
                 Background="Gainsboro"
                 Margin="0">
-                    <charting:Chart x:ConnectionId='1'
+                    <charting:Chart x:ConnectionId='2'
                 x:Name="MixedChart"
                 Title="Mixed Chart"
                 Margin="70,0">
